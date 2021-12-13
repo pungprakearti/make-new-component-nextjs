@@ -22,7 +22,7 @@ const createFiles = () => {
   // Create folder
   fs.mkdirSync(dir)
 
-  // File paths and templates
+  // tsx file
   const tsxFilePath = dir + '/' + filename + '.tsx'
   const tsxFileTemplate = `import styles from './${filename}.module.scss'
 
@@ -45,6 +45,7 @@ const ${filename} = (props: Props): JSX.Element => {
 export default ${filename}
 `
 
+  // Sass file
   const scssFilePath = dir + '/' + filename + '.module.scss'
   const scssFileTemplate = `@import 'styles/main.scss';
 
@@ -53,12 +54,21 @@ export default ${filename}
 }
 `
 
+  // Index file
+  const indexFilePath = dir + '/index.ts'
+  const indexFileTemplate = `export { default } from './${filename}'
+`
+
   // Create files
   fs.writeFileSync(tsxFilePath, tsxFileTemplate, (error) => {
     throw new Error(error)
   })
 
   fs.writeFileSync(scssFilePath, scssFileTemplate, (error) => {
+    throw new Error(error)
+  })
+
+  fs.writeFileSync(indexFilePath, indexFileTemplate, (error) => {
     throw new Error(error)
   })
 }
