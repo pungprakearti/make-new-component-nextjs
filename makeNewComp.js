@@ -73,7 +73,7 @@ export default ${filename}
   })
 }
 
-// Get filename from arguments
+// Main
 let filename
 let dir
 try {
